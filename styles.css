@@ -1,0 +1,152 @@
+/*
+      SPACING SYSTEM (px)
+      2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+      FONT SIZE SYSTEM (px)
+      10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+      */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.body {
+  background-image: url(https://images.unsplash.com/photo-1619819308849-3ab4ab8deca2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80);
+  background-size: cover;
+  height: fit-content;
+  /* background-size: cover; */
+  /* height: 100vh; */
+
+  font-family: "Anek Odia", sans-serif;
+  font-size: 24px;
+}
+
+.app {
+  margin: 50vh auto;
+  width: 700px;
+  height: 800px;
+  border: 5px solid black;
+  border-radius: 20px;
+  background-color: rgb(178, 200, 230);
+  box-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.3);
+}
+
+.main {
+  background-color: rgb(54, 129, 216);
+  margin-bottom: 40px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  color: aliceblue;
+}
+
+#search {
+  margin-left: 20px;
+  margin-top: 20px;
+  font-size: 30px;
+  padding: 5px;
+  background-color: aliceblue;
+  border-radius: 10px;
+}
+
+#button {
+  font-size: 30px;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: aliceblue;
+  cursor: pointer;
+}
+
+#date-time {
+  font-size: 30px;
+  margin-left: 20px;
+  margin-bottom: -10px;
+  margin-top: 30px;
+}
+
+#location {
+  font-weight: bolder;
+  font-size: 52px;
+  margin-left: 20px;
+}
+
+.second {
+  background-color: rgb(178, 200, 230);
+  font-size: 30px;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+#weather-description {
+  margin-right: 200px;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  margin-top: 30px;
+  line-height: 1.2;
+  font-weight: bolder;
+}
+
+#icon {
+  width: 150px;
+  /* font-weight: bolder; */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(100%, -30%);
+}
+
+#temperature {
+  font-size: 80px;
+  font-weight: 300;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-30%);
+}
+
+#windSpeed {
+  margin-left: 20px;
+  margin-bottom: 5px;
+}
+
+#humidity {
+  margin-left: 20px;
+}
+
+.forecast-title {
+  margin-bottom: 20px;
+  margin-left: 20px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.forecon {
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+}
+
+.forecast-container {
+  /* background-color: cornflowerblue; */
+
+  margin: 0 50px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 50px;
+  align-items: center;
+  justify-content: center;
+}
+
+#weekly-date-time {
+  font-size: 32px;
+  font-weight: bolder;
+}
+#weekly-icon {
+  width: 80px;
+  margin-left: -12px;
+}
+#weekly-temperature {
+  font-size: 40px;
+  font-weight: bolder;
+}

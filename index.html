@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="styles.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anek+Odia:wght@100;300&display=swap"
+      rel="stylesheet"
+    />
+    <title>Weather App</title>
+  </head>
+ 
+  <body  class="body">
+    <div class="app container">
+      <div class="main container">
+        <!-- Form!!! -->
+        <input
+          class="search"
+          id="search"
+          type="text"
+          placeholder="Search City..."
+        />
+        <button id="button">Go</button>
+        <h3 id="date-time">Wed Apr 20 2022</h3>
+        <h1 id="location">Sydney, AU</h1>
+      </div>
+      <div class="second container">
+        <p id="weather-description">
+          Feels like 20°C. 
+        </p>
+        <img src ="http://openweathermap.org/img/wn/03n.png" id="icon"></img>
+        <p id="temperature">20°C</p>
+        <p id="windSpeed">Windspeed: 2km</p>
+        <p id="humidity">Humidity: 86%</p>
+      </div>
+      <h2 class="forecast-title">Weekly Forecast</h2>
+      <div class="forecast-container">
+        <div class="forecast container">
+          <p class= " hour first-td" id="weekly-date-time">Sat</p>
+          <img  src ="http://openweathermap.org/img/wn/03n.png" class= "first-icon" id="weekly-icon"></img>
+          <p class="first-temp" id="weekly-temperature">21°C</p>
+        </div>
+        <div class="forecon">
+          <p class="hour second-td" id="weekly-date-time">Sun</p>
+          <img src ="http://openweathermap.org/img/wn/03n.png"  class="second-icon" id="weekly-icon"></img>
+          <p  class="second-temp" id="weekly-temperature">21°C</p>
+        </div>
+        <div class="forecon">
+          <p  class=" hour third-td" id="weekly-date-time">Mon</p>
+          <img src ="http://openweathermap.org/img/wn/03n.png" class="third-icon" id="weekly-icon"></img>
+          <p class="third-temp" id="weekly-temperature">21°C</p>
+        </div>
+        <div class="forecon">
+          <p class=" hour fourth-td" id="weekly-date-time">Tue</p>
+          <img src ="http://openweathermap.org/img/wn/03n.png" class="fourth-icon" id="weekly-icon"></img>
+          <p class="fourth-temp" id="weekly-temperature">21°C</p>
+        </div>
+        <div class="forecon">
+          <p class=" hour fifth-td" id="weekly-date-time">Wed</p>
+          <img src ="http://openweathermap.org/img/wn/03n.png" class="fifth-icon" id="weekly-icon"></img>
+          <p class="fifth-temp" id="weekly-temperature">21°C</p>
+        </div>
+        
+      </div>
+    </div>
+    <script src="script.js">
+      
+    </script>
+  </body>
+</html>
