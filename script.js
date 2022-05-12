@@ -119,18 +119,6 @@ searchBtn.addEventListener("click", function () {
 
           //Days----------------------------------------------------
 
-          //looping date to get formatted day (mon-tues-wed)
-          // const dayArr = [];
-          // for (var i = 0; i < dateArr.length; i++) {
-          //   var options = { weekday: "long" };
-          //   const value = new Date(dateArr[i]);
-          //   const dayString = String(
-          //     new Intl.DateTimeFormat("en-US", options).format(value)
-          //   );
-          //   const slicedDay = dayString.slice(0, 3);
-          //   dayArr.push(slicedDay);
-          // }
-
           const dayArr = dateArr.map(function (arr) {
             var options = { weekday: "long" };
             const value = new Date(arr);
@@ -148,17 +136,12 @@ searchBtn.addEventListener("click", function () {
           td4.innerHTML = fourthD;
           td5.innerHTML = fifthD;
 
-          //
-          //
           //Temp-----------------------------------------------------
 
-          //looping info from array and formatting into (21°C)
-          const formattedTempArr = [];
-          for (let i = 0; i < tempArr.length; i++) {
-            const valueTemp = String(tempArr[i]);
-            const formattedTemp = `${valueTemp.slice(0, -2)}°C`;
-            formattedTempArr.push(formattedTemp);
-          }
+          const formattedTempArr = tempArr.map(function (arr) {
+            const valueTemp = String(arr);
+            return `${valueTemp.slice(0, -2)}°C`;
+          });
 
           //Destructuring and assigning
           const [firstT, secondT, thirdT, fourthT, fifthT] = formattedTempArr;
@@ -167,13 +150,6 @@ searchBtn.addEventListener("click", function () {
           temp3.innerHTML = thirdT;
           temp4.innerHTML = fourthT;
           temp5.innerHTML = fifthT;
-
-          //
-          //
-          //
-          //
-          //
-          //
 
           //icon--------------------------------------------------------------
           //Destructuring and assigning
@@ -185,14 +161,7 @@ searchBtn.addEventListener("click", function () {
           icon5.src = `http://openweathermap.org/img/wn/${fifthI}.png`;
         });
 
-      //
-      //
-      //
-      //
-      //
-      //
-
-      // Unpslash API for background IMG
+      // Unpslash API for background IMG -------------------------------------------------------
 
       fetch(
         `https://api.unsplash.com/search/photos/?client_id=dbMN8qb4WA4zxiF3YJ5w7CizLQ-ajiZ7p7xYUD0njzI&query=${citySearch.value}`
@@ -209,11 +178,7 @@ searchBtn.addEventListener("click", function () {
 
           bodyBackground.style.backgroundImage = "url(" + backgroundImg + ")";
 
-          /////////////////////////////////////
-          //Clear input field
-          // citySearch.value = "";
-          // CHANGE BEFORE REPOSIT
-          //////////////////////////////////////
+          citySearch.value = "";
         });
     });
 });
