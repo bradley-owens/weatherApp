@@ -76,7 +76,13 @@ searchBtn.addEventListener("click", function () {
       const valueIcon = data["weather"][0].icon;
 
       //date and time
-      const date = String(new Date(data["dt"] * 1000));
+      const date = new Date(data["dt"] * 1000);
+      const day = `${date.getDate()}`.padStart(2, 0);
+      const month = `${date.getMonth() + 1}`.padStart(2, 0); // bc zero based
+      const year = date.getFullYear();
+      const hour = date.getHours();
+      const minutes = date.getMinutes();
+      const formattedDate = `${day}/${month}/${year}, ${hour}:${minutes}`;
 
       //Applying values to DOM
 
@@ -87,8 +93,7 @@ searchBtn.addEventListener("click", function () {
       temp.innerHTML = valueTemp;
       icon.innerHTML = valueIcon;
       icon.src = `http://openweathermap.org/img/wn/${valueIcon}.png`;
-      dateTime.innerHTML = date.slice(0, -52);
-
+      dateTime.innerHTML = formattedDate;
       // weekly forecast------------------------------------------
 
       fetch(
