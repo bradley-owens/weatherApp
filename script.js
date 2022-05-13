@@ -59,11 +59,8 @@ searchBtn.addEventListener("click", function () {
         description[0],
         description[0].toUpperCase()
       );
-      const feelsLikeTemp = String(data["main"]["feels_like"]);
-      const stringDescription = `Feels like ${feelsLikeTemp.slice(
-        0,
-        -2
-      )}°C. ${correctDescription}`;
+      const feelsLikeTemp = data["main"]["feels_like"].toFixed(0);
+      const stringDescription = `Feels like ${feelsLikeTemp}°C. ${correctDescription}`;
 
       //Windspeed
       const valueWindSpeed = `Wind: ${data["wind"]["speed"]}km`;
@@ -72,8 +69,8 @@ searchBtn.addEventListener("click", function () {
       const valueHumidity = `Humidity: ${data["main"]["humidity"]}%`;
 
       //Main temperature
-      const locationTemp = String(data["main"]["temp"]);
-      const valueTemp = `${locationTemp.slice(0, -2)}°C`;
+      const locationTemp = data["main"]["temp"].toFixed(0);
+      const valueTemp = `${locationTemp}°C`;
 
       //icon
       const valueIcon = data["weather"][0].icon;
@@ -101,8 +98,6 @@ searchBtn.addEventListener("click", function () {
       )
         .then((response) => response.json())
         .then((dataFive) => {
-          console.log(dataFive);
-
           //looping info from API and storing in arrays
           const dateArr = [];
           const tempArr = [];
@@ -139,8 +134,8 @@ searchBtn.addEventListener("click", function () {
           //Temp-----------------------------------------------------
 
           const formattedTempArr = tempArr.map(function (arr) {
-            const valueTemp = String(arr);
-            return `${valueTemp.slice(0, -2)}°C`;
+            const valueTemp = arr.toFixed(0);
+            return `${valueTemp}°C`;
           });
 
           //Destructuring and assigning
