@@ -80,8 +80,8 @@ searchBtn.addEventListener("click", function () {
       const day = `${date.getDate()}`.padStart(2, 0);
       const month = `${date.getMonth() + 1}`.padStart(2, 0); // bc zero based
       const year = date.getFullYear();
-      const hour = date.getHours();
-      const minutes = date.getMinutes();
+      const hour = `${date.getHours()}`.padStart(2, 0);
+      const minutes = `${date.getMinutes()}`.padStart(2, 0);
       const formattedDate = `${day}/${month}/${year}, ${hour}:${minutes}`;
 
       //Applying values to DOM
