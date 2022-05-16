@@ -77,12 +77,17 @@ searchBtn.addEventListener("click", function () {
 
       //date and time
       const date = new Date(data["dt"] * 1000);
-      const day = `${date.getDate()}`.padStart(2, 0);
-      const month = `${date.getMonth() + 1}`.padStart(2, 0); // bc zero based
-      const year = date.getFullYear();
-      const hour = `${date.getHours()}`.padStart(2, 0);
-      const minutes = `${date.getMinutes()}`.padStart(2, 0);
-      const formattedDate = `${day}/${month}/${year}, ${hour}:${minutes}`;
+      const options = {
+        hour: "numeric",
+        minute: "numeric",
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+        weekday: "long",
+      };
+      const formattedDate = new Intl.DateTimeFormat("en-AU", options).format(
+        date
+      );
 
       //Applying values to DOM
 
