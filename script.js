@@ -77,22 +77,20 @@ searchBtn.addEventListener("click", function () {
 
       //date and time
 
-      setInterval(() => {
-        let date = new Date(data["dt"] * 1000);
-        const options = {
-          hour: "numeric",
-          minute: "numeric",
-          second: "numeric",
-          day: "numeric",
-          month: "long",
-          year: "numeric",
-          weekday: "long",
-        };
-        const formattedDate = new Intl.DateTimeFormat("en-AU", options).format(
-          date
-        );
-        dateTime.innerHTML = formattedDate;
-      }, 1000);
+      let date = new Date(data["dt"] * 1000);
+      const options = {
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+        weekday: "long",
+      };
+
+      const formattedDate = new Intl.DateTimeFormat("en-AU", options).format(
+        date
+      );
 
       //Applying values to DOM
 
@@ -103,7 +101,8 @@ searchBtn.addEventListener("click", function () {
       temp.innerHTML = valueTemp;
       icon.innerHTML = valueIcon;
       icon.src = `http://openweathermap.org/img/wn/${valueIcon}.png`;
-      // dateTime.innerHTML = formattedDate;
+      dateTime.innerHTML = formattedDate;
+
       // weekly forecast------------------------------------------
 
       fetch(
