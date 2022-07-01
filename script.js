@@ -36,18 +36,20 @@ const td5 = document.querySelector(".fifth-td");
 const icon5 = document.querySelector(".fifth-icon");
 const temp5 = document.querySelector(".fifth-temp");
 
-searchBtn.addEventListener("click", function () {
-  fetch(
-    "https://api.openweathermap.org/data/2.5/weather?q=" +
-      citySearch.value +
-      "&appid=18668a4c2ad515c5b7e803dfd6a0af25&units=metric"
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      if (data["message"] === "city not found") {
-        alert("Not a valid city!");
-      }
+const getJSON = function (url, errMsg = "Uh Oh!") {
+  return fetch(url).then((response) => {
+    if (!response.ok) {
+      throw new Error(`${errMsg} Could not find country (${response.status}) `);
+    }
+    return response.json();
+  });
+};
 
+searchBtn.addEventListener("click", function () {
+  getJSON(
+    `https://api.openweathermap.org/data/2.5/weather?q=${citySearch.value}&appid=18668a4c2ad515c5b7e803dfd6a0af25&units=metric`
+  )
+    .then((data) => {
       //Location (city & country)
       const valueCityLocation = data["name"];
       const valueCountry = data["sys"]["country"];
@@ -105,13 +107,10 @@ searchBtn.addEventListener("click", function () {
 
       // weekly forecast------------------------------------------
 
-      return fetch(
-        "http://api.openweathermap.org/data/2.5/forecast?q=" +
-          citySearch.value +
-          "&appid=dbab33003a27afd19ca1089574e71c9b&units=metric"
+      return getJSON(
+        `http://api.openweathermap.org/data/2.5/forecast?q=${citySearch.value}&appid=dbab33003a27afd19ca1089574e71c9b&units=metric`
       );
     })
-    .then((response) => response.json())
     .then((dataFive) => {
       //looping info from API and storing in arrays
       const dateArr = [];
@@ -172,11 +171,10 @@ searchBtn.addEventListener("click", function () {
 
       // Unpslash API for background IMG -------------------------------------------------------
 
-      return fetch(
+      return getJSON(
         `https://api.unsplash.com/search/photos/?client_id=dbMN8qb4WA4zxiF3YJ5w7CizLQ-ajiZ7p7xYUD0njzI&query=${citySearch.value}`
       );
     })
-    .then((response) => response.json())
     .then((dataImg) => {
       // console.log(dataImg);
 
@@ -191,8 +189,6 @@ searchBtn.addEventListener("click", function () {
       citySearch.value = "";
     })
     .catch((err) => {
-      console.error(` Something went wrong Error:${err}`);
-
-      alert(` Something went wrong Error:${err}`);
+      alert(err);
     });
 });
