@@ -36,15 +36,32 @@ const td5 = document.querySelector(".fifth-td");
 const icon5 = document.querySelector(".fifth-icon");
 const temp5 = document.querySelector(".fifth-temp");
 
+const getJSON = function (url) {
+  return fetch(url).then((response) => {
+    if (!response.ok) throw new Error("Could not find your City!");
+    return response.json();
+  });
+};
+
 searchBtn.addEventListener("click", async function () {
   try {
-    const responseMain = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${citySearch.value}&appid=18668a4c2ad515c5b7e803dfd6a0af25&units=metric`
-    );
+    const getData = await Promise.all([
+      getJSON(
+        `https://api.openweathermap.org/data/2.5/weather?q=${citySearch.value}&appid=18668a4c2ad515c5b7e803dfd6a0af25&units=metric`
+      ),
+      getJSON(
+        `http://api.openweathermap.org/data/2.5/forecast?q=${citySearch.value}&appid=dbab33003a27afd19ca1089574e71c9b&units=metric`
+      ),
+      getJSON(
+        `https://api.unsplash.com/search/photos/?client_id=dbMN8qb4WA4zxiF3YJ5w7CizLQ-ajiZ7p7xYUD0njzI&query=${citySearch.value}`
+      ),
+    ]);
 
-    if (!responseMain.ok) throw new Error("Problem finding your city");
-    const dataMain = await responseMain.json();
+    let dataMain = getData[0];
+    let dataWeekly = getData[1];
+    let dataImg = getData[2];
 
+    ////////////////////////////////////////////////////////
     //Location (city & country)
     const valueCityLocation = dataMain["name"];
     const valueCountry = dataMain["sys"]["country"];
@@ -100,13 +117,8 @@ searchBtn.addEventListener("click", async function () {
     icon.src = `http://openweathermap.org/img/wn/${valueIcon}.png`;
     dateTime.innerHTML = formattedDate;
 
+    ////////////////////////////////////////////////////////////
     // weekly forecast------------------------------------------
-
-    const responseWeekly = await fetch(
-      `http://api.openweathermap.org/data/2.5/forecast?q=${citySearch.value}&appid=dbab33003a27afd19ca1089574e71c9b&units=metric`
-    );
-
-    const dataWeekly = await responseWeekly.json();
 
     //looping info from API and storing in arrays
     const dateArr = [];
@@ -117,6 +129,7 @@ searchBtn.addEventListener("click", async function () {
       const dateInfo = dataWeekly.list[i].dt_txt;
       const tempInfo = dataWeekly.list[i].main.temp;
       const iconInfo = dataWeekly.list[i].weather[0].icon;
+
       iconArr.push(iconInfo);
       tempArr.push(tempInfo);
       dateArr.push(dateInfo);
@@ -165,13 +178,8 @@ searchBtn.addEventListener("click", async function () {
     icon4.src = `http://openweathermap.org/img/wn/${fourthI}.png`;
     icon5.src = `http://openweathermap.org/img/wn/${fifthI}.png`;
 
+    //////////////////////////////////////////////////////
     // Unpslash API for background IMG -------------------------------------------------------
-
-    const responseImg = await fetch(
-      `https://api.unsplash.com/search/photos/?client_id=dbMN8qb4WA4zxiF3YJ5w7CizLQ-ajiZ7p7xYUD0njzI&query=${citySearch.value}`
-    );
-
-    const dataImg = await responseImg.json();
 
     const backgroundImg =
       dataImg.results[Math.trunc(Math.random() * 9) + 1]["urls"].regular;
