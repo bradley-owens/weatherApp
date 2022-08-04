@@ -57,6 +57,7 @@ searchBtn.addEventListener("click", async function () {
       ),
     ]);
 
+    //Assign data
     let dataMain = getData[0];
     let dataWeekly = getData[1];
     let dataImg = getData[2];
