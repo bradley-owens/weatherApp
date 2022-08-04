@@ -50,7 +50,7 @@ searchBtn.addEventListener("click", async function () {
         `https://api.openweathermap.org/data/2.5/weather?q=${citySearch.value}&appid=18668a4c2ad515c5b7e803dfd6a0af25&units=metric`
       ),
       getJSON(
-        `http://api.openweathermap.org/data/2.5/forecast?q=${citySearch.value}&appid=dbab33003a27afd19ca1089574e71c9b&units=metric`
+        `https://api.openweathermap.org/data/2.5/forecast?q=${citySearch.value}&appid=dbab33003a27afd19ca1089574e71c9b&units=metric`
       ),
       getJSON(
         `https://api.unsplash.com/search/photos/?client_id=dbMN8qb4WA4zxiF3YJ5w7CizLQ-ajiZ7p7xYUD0njzI&query=${citySearch.value}`
