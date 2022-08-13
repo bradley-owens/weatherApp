@@ -14,7 +14,7 @@
 
 .app {
   margin: 25vh auto;
-  width: 40%;
+  width: 35rem;
   border: 5px solid black;
   border-radius: 20px;
   background-color: rgb(178, 200, 230);
@@ -69,7 +69,7 @@
   margin-left: 1.3rem;
   margin-bottom: 0.8rem;
   margin-top: 2rem;
-  line-height: 1.2;
+  line-height: 1.1;
   font-weight: bolder;
 }
 
