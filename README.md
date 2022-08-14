@@ -14,6 +14,7 @@ exist, an error will be thrown at the user.
 ## What is displayed
 
 Throughout the application the user will recieve data such as:
+
     - Date and time
     - The specified city/country that was inputted
     - Description of the current weather
@@ -26,6 +27,7 @@ Throughout the application the user will recieve data such as:
 ## Tech Stack
 
 The tech stack used throughout this application is:
+
     - HTML
     - CSS
     - Vanilla Javascript
